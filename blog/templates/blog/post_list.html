@@ -1,28 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Blog</title>
-
-	<link rel = "icon" type = "image/x-icon" href = "https://www.sambacouture.com/wp-content/uploads/2017/12/Sambacouture-logo-icon.png"
-</head>
-<body>
-	<div> 
-		<h1>
-			<a href = "/">yrys_NM Blogs</a>
-		</h1>
-
-	</div>
+{% extends 'blog/base.html' %}
 
 	<!-- {{ posts }} -->
-
+{% block content %}			
 	{% for post in posts %}
-		<div>
-			<p>published: {{ post.published_date }}</p>
-			<h1><a href = "">{{ post.title }}</a></h1>
+		<div class = "post">
+			<div class = "date">
+				<p>published: {{ post.published_date }}</p>
+			</div>
+
+			<h1><a href = "{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
 			<p>{{post.text|linebreaksbr}}</p>
 		</div>
 	{% endfor %}
-</body>
-</html>
+{% endblock %}
