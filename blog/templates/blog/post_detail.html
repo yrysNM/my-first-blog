@@ -13,10 +13,18 @@
 			<a href = "{% url 'post_edit' pk=post.pk %}" class = "btn btn-defaul">
 				<span class = "glyphicon glyphicon-pencil"></span>	
 			</a>
-			
+
 		{% endif%}
 
 		<h1>{{post.title}}</h1>
+
 		<p>{{post.text|linebreaksbr}}</p>
+		
+		<form method = "POST">
+			{% csrf_token %}
+			
+			<a href = "{% url 'post_list' %}"><button  type = "submit" class = "btn btn-default">Delete</button></a>
+			
+		</form>
 	</div>
 {% endblock %}

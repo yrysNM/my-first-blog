@@ -25,7 +25,12 @@ def post_list(request):
 
 def post_detail(request, pk):
 	post = get_object_or_404(Post, pk = pk)
+	#rev = pos.delete()
 	#return redirect('post_detail', pk = post.pk)
+	if(request.method == "POST"):
+		post.delete()
+		return redirect("post_list")
+
 	return render(request, 'blog/post_detail.html', {"post": post})
 
 
